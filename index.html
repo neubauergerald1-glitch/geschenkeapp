@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Geschenkideen</title>
+  <meta name="theme-color" content="#1f5f4a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <img src="icon.svg" alt="" width="52" height="52">
+      <div class="brand-text">
+        <span class="label">Persönlich · lokal gespeichert</span>
+        <h1>Geschenkideen</h1>
+      </div>
+    </div>
+    <div class="totals num" id="totals"></div>
+  </header>
+
+  <div class="toolbar">
+    <div class="seg" role="tablist" aria-label="Ansicht">
+      <button type="button" role="tab" data-view="anlass" aria-selected="true">Nach Anlass</button>
+      <button type="button" role="tab" data-view="person" aria-selected="false">Nach Person</button>
+    </div>
+    <div class="field"><label class="label" for="f-search">Suche</label><input id="f-search" type="search" placeholder="Geschenk, Notiz …"></div>
+    <div class="field"><label class="label" for="f-person">Person</label><select id="f-person"></select></div>
+    <div class="field"><label class="label" for="f-anlass">Anlass</label><select id="f-anlass"></select></div>
+    <div class="field"><label class="label" for="f-status">Status</label><select id="f-status"></select></div>
+    <label class="check"><input type="checkbox" id="f-hide"> Verworfene ausblenden</label>
+    <button class="ghost" id="f-reset" type="button">Filter zurücksetzen</button>
+  </div>
+
+  <form class="new-anlass" id="new-anlass">
+    <div class="field"><label class="label" for="na-name">Neuer Anlass</label><input id="na-name" placeholder="z. B. Weihnachten 2026, Geburtstag Anna" required></div>
+    <div class="field"><label class="label" for="na-datum">Datum</label><input id="na-datum" type="date"></div>
+    <div class="field"><label class="label" for="na-budget">Budget (€)</label><input id="na-budget" type="number" min="0" step="1" inputmode="decimal" placeholder="0"></div>
+    <button class="primary" type="submit">Anlass anlegen</button>
+  </form>
+
+  <main id="list"></main>
+
+  <footer class="foot">
+    <p class="note">„Geplant“ = Summe aller Geschenke außer verworfenen. „Gekauft“ zählt Bestellt, Gekauft, Verpackt und Verschenkt. „Übrig“ = Budget minus Geplant. Änderungen werden beim Verlassen eines Feldes gespeichert.</p>
+    <div class="foot-actions">
+      <button type="button" id="btn-export">Export (JSON)</button>
+      <label class="btn" for="file-import">Import (JSON)</label>
+      <input type="file" id="file-import" accept="application/json,.json" hidden>
+    </div>
+  </footer>
+</div>
+<datalist id="persons"></datalist>
+<script src="app.js"></script>
+</body>
+</html>
